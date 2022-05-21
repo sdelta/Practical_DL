@@ -135,7 +135,7 @@ def _train(args):
         model.train(False)
         val_acc = compute_accuracy(device, model, val_batch_gen)
         test_acc = compute_accuracy(device, model, test_batch_gen)
-        _save_checkpoint(model, optimizer, epoch + 1, loss, args)
+        _save_checkpoint(model, optimizer, epoch + 1, loss, val_acc, test_acc, args)
             
     logger.info('Finished Training')
     return _save_model(model, args.model_dir)
